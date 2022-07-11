@@ -11,8 +11,11 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
         const cityArray = travelData.cities
         usInfo = cityArray.filter(countryObj => countryObj.country_name === 'United States')
         
-        });
-    function renderElement(element){
-        const p = document.createElement('p')
-        p.textContent = element
-    }
+    })
+
+document.getElementById('form').addEventListener('submit',(e)=> {
+    e.preventDefault()
+    const cityData = e.target.city.value
+    const stateData = e.target.state.value
+    console.log(cityData,stateData)
+})
