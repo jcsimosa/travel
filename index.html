@@ -26,7 +26,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnjQ6ijOWvr0qgwvEkAPMn-S-Bu4GZky8&libraries=places" type="text/javascript"></script>\
         
         <script>
-          var map = new google.maps.Map(document.getElementById('map-canvas'),{
+          const map = new google.maps.Map(document.getElementById('map-canvas'),{
             center:{
                 lat:39.828175,
                 lng:-98.5795 
@@ -34,7 +34,7 @@
             zoom:4
           });
         
-          var marker = new google.maps.Marker({
+          const marker = new google.maps.Marker({
             position:{
                 lat:39.828175,
                 lng:-98.5795 
@@ -43,15 +43,15 @@
             draggable: true
           });
         
-          var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+          const searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
           
           // place change event on search box
           google.maps.event.addListener(searchBox, 'places_changed',function(){
                 
-              var places = searchBox.getPlaces();
+              const places = searchBox.getPlaces();
               // bound
-              var bounds = new google.maps.LatLngBounds();
-              var i, place;
+              const bounds = new google.maps.LatLngBounds();
+              let i, place;
               
               for (i=0; place=places[i];i++){
         
