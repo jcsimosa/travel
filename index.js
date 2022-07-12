@@ -10,7 +10,6 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
     .then(travelData => {
         const cityArray = travelData.cities
         usInfo = cityArray.filter(countryObj => countryObj.country_name === 'United States')
-        // console.log(usInfo)
         document.getElementById('form').addEventListener('submit',(e)=> {
             e.preventDefault()
             const cityData = e.target.city.value
@@ -18,16 +17,48 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             
             const filteredState = usInfo.filter(state => state.state_code === stateData)
             const filteredCity = filteredState.filter(city => city.city_name === cityData)
-            console.log(filteredCity[0])
 
             const divResult = document.querySelector('div')
-            const ulResult = document.createElement('ul')
-            const liResult = document.createElement('li')
+            const h2Result = document.createElement('h2')
+            h2Result.style.fontSize = '25px'
+            h2Result.style['font-weight'] = 'bold'
 
-            ulResult.innerText = filteredState[0].state_code
-            liResult.innerText = filteredCity[0].city_name
-            divResult.append(ulResult)
-            ulResult.append(liResult)
+            h2Result.innerText = `${filteredCity[0].city_name} ${filteredState[0].state_code}`
+            divResult.append(h2Result)
+
+
+            priceInfo(cityData, stateData)
+
+
+            function priceInfo(cityValue, stateValue) {
+                fetch(`https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityValue}&country_name=United%20States`, {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': apiKey,
+                    'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com',
+                    }
+            }).then(data => data.json())
+              .then(cityPriceInfo => {
+                if (cityPriceInfo.state_code = stateValue){
+                    // console.log(cityPriceInfo.prices)
+                    const liItem = document.createElement('li')
+                    const oneBedroomRent = cityPriceInfo.prices[20]
+                    liItem.textContent = oneBedroomRent.item_name
+                    liItem.style.fontSize = 15
+                    // liItem.style.lineHeight = ''
+
+                    const ulResult = document.createElement('ul')
+                    ulResult.textContent =`${oneBedroomRent.category_name}: min $${oneBedroomRent.min}`
+                    ulResult.style['font-weight'] = 'normal'
+
+                    h2Result.append(liItem)
+                    liItem.append(ulResult)
+            
+                } else {console.log('can\'t find the city')}
+              })
+            }
+            
+            
         })
     
     })
