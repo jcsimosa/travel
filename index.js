@@ -1,3 +1,10 @@
+const map = new google.maps.Map(document.getElementById('map-canvas'),{
+  center:{
+      lat:39.828175,
+      lng:-98.5795 
+  },
+  zoom:4
+});
 
 fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
     method: 'GET',
@@ -30,6 +37,14 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
 
             priceInfo(cityData, stateData)
 
+            new google.maps.Marker({
+              position:{
+                  lat: filteredCity[0].lat,
+                  lng: filteredCity[0].lng 
+              },
+              map:map,
+              draggable: true
+          })
 
             function priceInfo(cityValue, stateValue) {
                 fetch(`https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityValue}&country_name=United%20States`, {
