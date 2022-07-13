@@ -33,9 +33,10 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             })
             const tableContainer = document.createElement('TABLE')
             tableContainer.className = 'info'
-            const tableHead = document.createElement('th')
-            const tableRow = document.createElement('tr')
-            tableContainer.append(tableHead,tableRow)
+            const tableRowHeader = document.createElement('tr')
+            const tableRowPrices = document.createElement('tr')
+            tableContainer.append(tableRowHeader,tableRowPrices)
+
             const divResult = document.querySelector('div')
             const h2Result = document.createElement('h2')
             h2Result.style.fontSize = '25px'
@@ -79,12 +80,14 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
                     })
             
                 function renderInfo (item) {   
-                    console.log(item)    
-                    const itemName = document.createElement('td')
-                    const price = document.createElement('td')
-                    itemName.textContent = item.item_name
-                    price.textContent = item.usd.avg
-                    tableRow.append(itemName,price)
+                            console.log(item)    
+                            const itemName = document.createElement('th')
+                            const price = document.createElement('td')
+                            itemName.textContent = item.item_name
+                            price.textContent = item.usd.avg
+                    
+                            tableRowHeader.append(itemName)
+                            tableRowPrices.append(price)
                 }
                 
                     }

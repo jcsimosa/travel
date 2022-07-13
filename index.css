@@ -30,6 +30,34 @@ select {
     font-size: inherit;
     cursor: pointer;
 }
+/* table */
+.info {
+    border-collapse: collapse;
+    margin: 25px auto 60px auto;
+    align-items: center;
+    font-size: 0.9em;
+    font-family: inherit;
+    text-align: center;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.info td {
+    padding: 12px 15px;
+    color:#313131
+}
+.info th {
+    background-color: rgb(121, 154, 180);
+    color: #ffffff;
+    text-align: center;
+}
+.info th,
+.info td {
+    padding: 12px 15px;
+}
+.info  tr:last-of-type {
+    border-bottom: 3px solid  rgb(121, 154, 180);
+}
+
 /* Comment Section */
 body {
     font-family: Arial, Helvetica, sans-serif;
