@@ -26,13 +26,18 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             const filteredState = usInfo.filter(state => state.state_code === stateData)
             const filteredCity = filteredState.filter(city => city.city_name === cityData)
 
+            const tableContainer = document.createElement('TABLE')
+            tableContainer.className = 'info'
+            const tableHead = document.createElement('th')
+            const tableRow = document.createElement('tr')
+            tableContainer.append(tableHead,tableRow)
             const divResult = document.querySelector('div')
             const h2Result = document.createElement('h2')
             h2Result.style.fontSize = '25px'
             h2Result.style['font-weight'] = 'bold'
 
             h2Result.innerText = `${filteredCity[0].city_name} ${filteredState[0].state_code}`
-            divResult.append(h2Result)
+            divResult.append(h2Result,tableContainer)
 
 
             priceInfo(cityData, stateData)
@@ -62,20 +67,20 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
                     newArrayApartment.forEach(obj => {
                         renderInfo(obj)
                     });
-                    newArrayMarket.forEach(obj => {
-                        renderInfo(obj)
-                    })
+                    //newArrayMarket.forEach(obj => {
+                      //  renderInfo(obj)
+                    //})
                     newArrayRent.forEach(obj => {
                         renderInfo(obj)
                     })
             
                 function renderInfo (item) {   
                     console.log(item)    
-                    const itemName = document.createElement('p')
-                    const price = document.createElement('p')
-                     itemName.textContent = item.item_name
-                     price.textContent = item.usd.avg
-                    divResult.append(itemName,price)
+                    const itemName = document.createElement('td')
+                    const price = document.createElement('td')
+                    itemName.textContent = item.item_name
+                    price.textContent = item.usd.avg
+                    tableRow.append(itemName,price)
                 }
                 
                     }
