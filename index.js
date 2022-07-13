@@ -26,6 +26,8 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             const filteredState = usInfo.filter(state => state.state_code === stateData)
             const filteredCity = filteredState.filter(city => city.city_name === cityData)
 
+            const favoriteBtn = document.createElement('button')
+            favoriteBtn.textContent =  '⭐️' 
             const tableContainer = document.createElement('TABLE')
             tableContainer.className = 'info'
             const tableHead = document.createElement('th')
@@ -37,7 +39,7 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             h2Result.style['font-weight'] = 'bold'
 
             h2Result.innerText = `${filteredCity[0].city_name} ${filteredState[0].state_code}`
-            divResult.append(h2Result,tableContainer)
+            divResult.append(h2Result,favoriteBtn,tableContainer)
 
 
             priceInfo(cityData, stateData)
