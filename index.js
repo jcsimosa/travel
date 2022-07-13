@@ -41,7 +41,7 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             h2Result.style.fontSize = '25px'
             h2Result.style['font-weight'] = 'bold'
 
-            h2Result.innerText = `${filteredCity[0].city_name} ${filteredState[0].state_code}`
+            h2Result.innerText = `${filteredCity[0].city_name}, ${filteredState[0].state_code}`
             divResult.innerHTML = ""
             divResult.append(h2Result,favoriteBtn,tableContainer)
 
