@@ -86,14 +86,14 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
         })
     
     })
+// update
+window.onload = function () {
+    var commentform = document.forms['commentForm']
+    var commentObj = new CommentClass();
+    commentObj.addInputBoxEventListener(document.getElementById('main-comment'), 'comments');
 
-    window.onload = function () {
-        var commentform = document.forms['commentForm']
-        var commentObj = new CommentClass();
-        commentObj.addInputBoxEventListener(document.getElementById('main-comment'), 'comments');
-      
-      }
-      
+}
+
       function CommentClass () {
         var _self = this;
         this.addInputBoxEventListener = function (elem, target, hideClass) {
