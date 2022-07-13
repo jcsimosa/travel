@@ -136,3 +136,20 @@ body {
     margin-left: 10px;
     font-size: 0.8em;
 }
+
+h3 {
+    margin: 1em 0 0.5em 0;
+	font-weight: 450;
+	font-family: 'Helvetica', sans-serif;
+    text-align: center;
+	position: relative;  
+	font-size: 24px;
+    font-style: oblique 40deg;
+	line-height: 20px;
+	padding: 15px 15px 15px 15px;
+	color: #234481;
+	box-shadow: 5px 5px 5px rgb(201, 199, 199);
+	border-radius: 100px 100px 100px 100px;
+    background: linear-gradient(45deg, #78adf3, #58d358);
+    
+}
