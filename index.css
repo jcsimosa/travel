@@ -2,7 +2,7 @@ h1 {
     color: white;
     text-align: center;
 }
-input {
+input{
     padding: 10px;
     margin: 10px 0;
     border: 2px solid #eee;
@@ -20,3 +20,13 @@ header {
     background-repeat: no-repeat;
     background-size: 100% 300px;
 }   
+select {
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #eee;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}

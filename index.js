@@ -14,6 +14,7 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             e.preventDefault()
             const cityData = e.target.city.value
             const stateData = e.target.state.value
+
             
             const filteredState = usInfo.filter(state => state.state_code === stateData)
             const filteredCity = filteredState.filter(city => city.city_name === cityData)
@@ -39,22 +40,30 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
                     }
             }).then(data => data.json())
               .then(cityPriceInfo => {
-                if (cityPriceInfo.state_code = stateValue){
-                    // console.log(cityPriceInfo.prices)
-                    const liItem = document.createElement('li')
-                    const oneBedroomRent = cityPriceInfo.prices[20]
-                    liItem.textContent = oneBedroomRent.item_name
-                    liItem.style.fontSize = 15
-                    // liItem.style.lineHeight = ''
-
-                    const ulResult = document.createElement('ul')
-                    ulResult.textContent =`${oneBedroomRent.category_name}: min $${oneBedroomRent.min}`
-                    ulResult.style['font-weight'] = 'normal'
-
-                    h2Result.append(liItem)
-                    liItem.append(ulResult)
+                if (cityPriceInfo.state_code === stateValue){
+                    const newArrayRent = cityPriceInfo.prices.filter(categoryOBj => categoryOBj.category_name === 'Rent Per Month')
+                    const newArrayApartment =    cityPriceInfo.prices.filter(categoryOBj => categoryOBj.category_name === 'Buy Apartment')
+                    const newArrayMarket = cityPriceInfo.prices.filter(categoryOBj => categoryOBj.category_name === 'Markets')
+                    newArrayApartment.forEach(obj => {
+                        renderInfo(obj)
+                    });
+                    newArrayMarket.forEach(obj => {
+                        renderInfo(obj)
+                    })
+                    newArrayRent.forEach(obj => {
+                        renderInfo(obj)
+                    })
             
-                } else {console.log('can\'t find the city')}
+                function renderInfo (item) {   
+                    console.log(item)    
+                    const itemName = document.createElement('p')
+                    const price = document.createElement('p')
+                     itemName.textContent = item.item_name
+                     price.textContent = item.usd.avg
+                    divResult.append(itemName,price)
+                }
+                
+                    }
               })
             }
             
