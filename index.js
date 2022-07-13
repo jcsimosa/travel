@@ -28,6 +28,9 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
 
             const favoriteBtn = document.createElement('button')
             favoriteBtn.textContent =  '⭐️' 
+            favoriteBtn.addEventListener('click', (e)=> {
+              alert('added to favorites')
+            })
             const tableContainer = document.createElement('TABLE')
             tableContainer.className = 'info'
             const tableHead = document.createElement('th')
@@ -39,6 +42,7 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             h2Result.style['font-weight'] = 'bold'
 
             h2Result.innerText = `${filteredCity[0].city_name} ${filteredState[0].state_code}`
+            divResult.innerHTML = ""
             divResult.append(h2Result,favoriteBtn,tableContainer)
 
 
@@ -65,13 +69,11 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
                 if (cityPriceInfo.state_code === stateValue){
                     const newArrayRent = cityPriceInfo.prices.filter(categoryOBj => categoryOBj.category_name === 'Rent Per Month')
                     const newArrayApartment =    cityPriceInfo.prices.filter(categoryOBj => categoryOBj.category_name === 'Buy Apartment')
-                    const newArrayMarket = cityPriceInfo.prices.filter(categoryOBj => categoryOBj.category_name === 'Markets')
+                   
                     newArrayApartment.forEach(obj => {
                         renderInfo(obj)
                     });
-                    //newArrayMarket.forEach(obj => {
-                      //  renderInfo(obj)
-                    //})
+                    
                     newArrayRent.forEach(obj => {
                         renderInfo(obj)
                     })
