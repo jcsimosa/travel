@@ -4,15 +4,24 @@
         <link rel="stylesheet" type="text/css" href="index.css">
     </head>
     <body>
-        <header>
-        <h1>CityFinder</h1>
+        <div id="header_bg">
+            <div id="header_title">
+                <h1>CityFinder</h1>
+            </div>
             <form id="form">
                 <input type="text" name='city' placeholder="City">
-                <input type="text" name="state" placeholder="State (ex: New York => NY)">
+                <input type="text" name="state" placeholder="State (ex: New York > NY)">
                 <input type="submit" value="Search"></input> 
             </form>
+        </div>
         </header>
-        <div id="searched_Info"></div>
+        <div id="searched_info">
+            <div id="intro_info">
+                <h2 class="title_text_serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+                <p class="paragraph_serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    <br>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
         <style>
             #map-canvas{
                 width: 100%;
@@ -20,53 +29,9 @@
             }
         </style>
         
-        <!-- <input type="text" id="mapsearch"> -->
-        <div id="map-canvas"></div>
+        <div id="map-canvas"></div>     
         
-        
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnjQ6ijOWvr0qgwvEkAPMn-S-Bu4GZky8&libraries=places" type="text/javascript"></script>
-        
-        <!-- <script>
-          const map = new google.maps.Map(document.getElementById('map-canvas'),{
-            center:{
-                lat:39.828175,
-                lng:-98.5795 
-            },
-            zoom:4
-          });
-        
-          const marker = new google.maps.Marker({
-            position:{
-                lat:39.828175,
-                lng:-98.5795 
-            },
-            map:map,
-            draggable: true
-          });
-        
-          const searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
-          
-          // place change event on search box
-          google.maps.event.addListener(searchBox, 'places_changed',function(){
-                
-              const places = searchBox.getPlaces();
-              // bound
-              const bounds = new google.maps.LatLngBounds();
-              let i, place;
-              
-              for (i=0; place=places[i];i++){
-        
-                // console.log(place.geometry.location);
-        
-                bounds.extend(place.geometry.location);
-                marker.setPosition(place.geometry.location); //set new marker position
-              }
-        
-              map.fitBounds(bounds);  //fit to bound
-              map.setZoom(4)          //set zoom or problems
-          }); -->
-        <!-- </script> -->
-         
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnjQ6ijOWvr0qgwvEkAPMn-S-Bu4GZky8&libraries=places" type="text/javascript"></script>         
         <div class="container">
 
             <h3>Comment Section</h3>
