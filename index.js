@@ -60,6 +60,7 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
           h2Result.appendChild(favoriteBtn)
 
           priceInfo(cityData, stateData)
+          e.target.reset()
 
           const map = new google.maps.Map(document.getElementById('map-canvas'),{
             center:{
@@ -137,9 +138,17 @@ window.onload = function () {
           return false;
         }, false)
       }
-    
+      function makeid() {
+        let text = "";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (let i = 0; i < 5; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+        return text;}
+
       this.addComment = function (comment, target) {
-        createCommentStructure(target, 'Practice User', comment, 0, new Date().getTime())
+        createCommentStructure(target, makeid(), comment, 0, new Date().getTime())
       }
     
       var createCommentStructure = function (target, header, content, upvote, date) {
@@ -201,6 +210,7 @@ window.onload = function () {
         commentFeature.appendChild(inputElement);
     
         replyBtn.addEventListener('click', function (e) {
+          e.preventDefault()
           var regex = /show/g;
           if (regex.test(inputElement.className)) {
             inputElement.className = 'comment-box reply-comment hide';

@@ -9,8 +9,8 @@
                 <h1>CityFinder</h1>
             </div>
             <form id="form">
-                <input type="text" name='city' placeholder="City">
-                <input type="text"  list="statecode" name="state" placeholder="State Code">
+                <input type="text" autocomplete="off" name='city' placeholder="City">
+                <input type="text" autocomplete="off"  list="statecode" name="state" placeholder="State Code">
                 <datalist id="statecode">
                     <option value="AL"></option>
                     <option value="AK"></option>
@@ -99,11 +99,12 @@
             
                 </div>
         
-        </div>
+            </div>
+            
+            <script defer src="index.js"></script>
+            <script src="secrets.js"></script>
+            
         
-        <script defer src="index.js"></script>
-        <script src="secrets.js"></script>
-        
-      
     </body>
 </html>
+
