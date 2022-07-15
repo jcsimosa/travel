@@ -29,10 +29,10 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
           }
           removingChildren(divResult)
 
+          //creating table
           const cityData = e.target.city.value
           const stateData = e.target.state.value
 
-          
           const filteredState = usInfo.filter(state => state.state_code === stateData)
           const filteredCity = filteredState.filter(city => city.city_name === titleCase(cityData))
 
@@ -55,13 +55,14 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
           h2Result.className = 'title_text'
 
           h2Result.innerText = `${filteredCity[0].city_name}, ${filteredState[0].state_code} `
-          // divResult.innerHTML = ""
+          divResult.innerHTML = ""
           divResult.append(h2Result,tableContainer)
           h2Result.appendChild(favoriteBtn)
 
           priceInfo(cityData, stateData)
           e.target.reset()
 
+          //map
           const map = new google.maps.Map(document.getElementById('map-canvas'),{
             center:{
                 lat:39.828175,
@@ -78,6 +79,7 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
             map:map,
             draggable: true
           })
+
           function priceInfo(cityValue, stateValue) {
               fetch(`https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityValue}&country_name=United%20States`, {
               method: 'GET',
@@ -100,13 +102,13 @@ fetch('https://cost-of-living-and-prices.p.rapidapi.com/cities', {
                   })
           
               function renderInfo (item) {   
-                          const itemName = document.createElement('th')
-                          const price = document.createElement('td')
-                          itemName.textContent = item.item_name
-                          price.textContent = item.usd.avg
-                  
-                          tableRowHeader.append(itemName)
-                          tableRowPrices.append(price)
+                const itemName = document.createElement('th')
+                const price = document.createElement('td')
+                itemName.textContent = item.item_name
+                price.textContent = item.usd.avg
+        
+                tableRowHeader.append(itemName)
+                tableRowPrices.append(price)
               }
                   }
             })
@@ -119,7 +121,6 @@ window.onload = function () {
   var commentform = document.forms['commentForm']
   var commentObj = new CommentClass();
   commentObj.addInputBoxEventListener(document.getElementById('main-comment'), 'comments');
-
 }
 
     function CommentClass () {
@@ -239,5 +240,4 @@ window.onload = function () {
           target.appendChild(outerDiv)
         }
       }
-    
     }
